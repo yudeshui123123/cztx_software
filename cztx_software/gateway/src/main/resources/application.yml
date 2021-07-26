@@ -1,0 +1,8 @@
+spring:
+  redis:
+    host: 192.168.17.131
+
+mybatis-plus:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

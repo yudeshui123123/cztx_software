@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UsersMapper">
+    <resultMap id="selectResult" type="com.example.entity.Users">
+        <id property="username" column="username"></id>
+        <result column="password" property="password"></result>
+        <result property="enabled" column="enabled"></result>
+        <collection property="authorities" ofType="com.example.entity.Authorities">
+            <id property="username" column="ausername"></id>
+            <result property="authority" column="authority"></result>
+        </collection>
+    </resultMap>
+    <select id="getUser" resultMap="selectResult">
+        select u.*,a.username ausername,authority from users u,authorities a where a.username = u.username and u.username = #{username}
+    </select>
+</mapper>
